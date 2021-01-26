@@ -1,0 +1,22 @@
+#消息队列
+spring:
+  rabbitmq:
+    host: 8.131.119.145
+    port: 5672
+    virtual-host: /dev
+    password: password
+    username: admin
+
+    #开启消息二次确认生产者到broker的交换机,默认是none
+    publisher-confirm-type: correlated
+
+    #开启消息二次确认，交换机到队列的可靠性投递,默认是false
+    publisher-returns: true
+    #交换机处理消息到路由失败，则会返回给生产者
+    template:
+      mandatory: true
+
+    #消息手工确认ACK,默认是auto
+    listener:
+      simple:
+        acknowledge-mode: manual
